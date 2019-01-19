@@ -1,0 +1,37 @@
+version: '3.6'
+
+services:
+  gonnectchatter:
+    build: .
+    ports:
+      - "5555:5555"
+  zookeeper:
+    image: debezium/zookeeper:0.8
+    ports:
+      - 2181:2181
+      - 2888:2888
+      - 3888:3888
+  kafka:
+    image: debezium/kafka:0.8
+    ports:
+      - 9092:9092
+    links:
+      - zookeeper
+    environment:
+      - ZOOKEEPER_CONNECT=zookeeper:2181
+      - ADVERTISED_LISTENERS=PLAINTEXT://192.168.1.17:9092
+  druid:
+    image: fokkodriesprong/docker-druid
+    ports:
+      - 8081:8081
+      - 8082:8082
+    depends_on:
+      - kafka
+    links:
+      - kafka
+  superset:
+    image: fokkodriesprong/docker-superset
+    ports:
+      - 8088:8088
+    links:
+      - druid

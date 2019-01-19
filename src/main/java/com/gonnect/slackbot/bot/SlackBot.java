@@ -19,6 +19,7 @@ import org.springframework.web.socket.WebSocketSession;
 import javax.annotation.PostConstruct;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.regex.Matcher;
 
 import static me.ramswaroop.jbot.core.common.EventType.DIRECT_MENTION;
@@ -32,6 +33,7 @@ public class SlackBot extends Bot {
 
     @Value("${slackBotToken}")
     private String slackToken;
+    AtomicInteger counter = new AtomicInteger(1);
 
     @Override
     public String getSlackToken() {
@@ -43,12 +45,16 @@ public class SlackBot extends Bot {
         return this;
     }
 
-    @Controller(events = {DIRECT_MENTION, EventType.DIRECT_MESSAGE})
+    @Controller(events = {EventType.DIRECT_MESSAGE})
     public void onReceiveDM(WebSocketSession session, Event event) {
-        reply(session, event, new Message("Hi, I am " + slackService.getCurrentUser().getName()));
+        if (event.getText().toString().contains("joke")) {
+            reply(session, event, new Message(jokes.get((int) (Math.random() * (32 - 0)) + 0)));
+        } else {
+            reply(session, event, "Hi, I am " + slackService.getCurrentUser().getName() + ".Gonnect is training me!!! Soon I will understand you. Appolgises!!!");
+        }
     }
 
-    @Controller(events = EventType.MESSAGE, pattern = "joke")
+    @Controller(events = DIRECT_MENTION, pattern = "joke")
     public void onReceiveMessage(WebSocketSession session, Event event, Matcher matcher) {
         if (!matcher.group(0).isEmpty()) {
 
@@ -59,6 +65,18 @@ public class SlackBot extends Bot {
         }
     }
 
+//    @Controller(events = {EventType.DIRECT_MENTION, EventType.DIRECT_MESSAGE},pattern = "fuck|shit|bitch")
+//    public void onReceiveDM(WebSocketSession session, Event event) {
+//        reply(session, event, new Message("Hi, I am " + slackService.getCurrentUser().getName()));
+//    }
+
+//    @Controller(events = DIRECT_MENTION, pattern = "fuck|shit|bitch")
+//    public void onReceiveMessage(WebSocketSession session, Event event, Matcher matcher) {
+//        if (!matcher.group(0).isEmpty()) {
+//
+//            reply(session, event, new Message("Becareful you have say bad words " + 100+ " times"));
+//        }
+//    }
 
 
     @PostConstruct
