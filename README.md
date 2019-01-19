@@ -1,6 +1,6 @@
 # Gonnect Chatter
 
- This is the world of business process automation. There are many ways to achieve business automation. One of the way to achieve a business process automation is creating a chat bot, which uses NLP/CNN and provides answer to a question. Some of use cases where bots can be used are:
+ This is the world of business process automation. There are many ways to achieve business automation. One of the way to achieve a business process automation is by creating a chat bot, which learn's using NLP/CNN. Some of use cases where bots can be used are:
   1. HR business process automation
   2. Banking Payment interaction automation
   3. Health Insurance claim adjudication process automation etc etc. 
