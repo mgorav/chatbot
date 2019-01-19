@@ -1,17 +1,26 @@
 # Gonnect Chatter
 
- This is the world of business process automation. There many ways to achieve business automation. One of the way achieve a business process automation is creating a chat bot, which uses NLP/CNN and provides answer to the question. Some of use cases which pops up like HR business process automation, Banking Payment interaction automatio, Health Insurance claim adjudication process automation etc etc. These chat bots perform best if they are treated like a normal asset of company. But that, it means, give them the power of data to these robots and provide them deep learning algorithm to excel. But hard it is to build such architecture & robots. Check out my github project, which does the following:
+ This is the world of business process automation. There are many ways to achieve business automation. One of the way to achieve a business process automation is creating a chat bot, which uses NLP/CNN and provides answer to a question. Some of use cases where bots can be used are:
+  1. HR business process automation
+  2. Banking Payment interaction automation
+  3. Health Insurance claim adjudication process automation etc etc. 
+  
+  These chat bots perform best if they are treated like a normal asset of a company. By that, I mean, give them the power of data to the bot which will use deep learning algorithm to perform there duties. How hard it can be to build such architecture & for these bots. 
+  
+  Check out my github chat bot project, which does the following:
  1. Tells you a joke
- 2. Give TopN wikipedia pages
+ 2. Give TopN wikipedia pages use real time streaming
  
  This chat bot is build using:
  1. Spring Boot
  2. Slack
  3. Kafka
  4. Druid
+ 5. Docker
  
- Also, the Gonnect Chatter box also reveals:
- Conversation AI = NLP + CNN + REST API
+ Also, the Gonnect Chatter box also reveals/unearth:
+ 
+ Chat bot = Conversation AI = NLP + CNN + REST API
  
  NOTE: To keep things simple, a basic text recognition is build
  
