@@ -18,7 +18,7 @@
  4. Druid
  5. Docker
  
- Also, the Gonnect Chatter box also reveals/unearth:
+ To summarize:
  
  Chat bot = Conversation AI = NLP + CNN + REST API
  
