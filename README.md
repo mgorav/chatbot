@@ -28,3 +28,8 @@
  
  ![alt text](./Gonnect_Chatter.png)
    
+ NOTE: Add token of your slack bot in application.properties file.
+ 
+ After running the Spring Boot application, you chat with Gonnect chatter box as shown below:
+ 
+ ![alt text](./Slack.png)
