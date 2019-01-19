@@ -12,8 +12,11 @@ import me.ramswaroop.jbot.core.slack.models.Event;
 import me.ramswaroop.jbot.core.slack.models.Message;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.socket.WebSocketSession;
 
 import javax.annotation.PostConstruct;
@@ -30,6 +33,24 @@ public class SlackBot extends Bot {
 
 
     private static final Logger logger = LoggerFactory.getLogger(SlackBot.class);
+    private final String wikiTopNQuery = "{\n" +
+            "  \"queryType\" : \"topN\",\n" +
+            "  \"dataSource\" : \"wikipedia\",\n" +
+            "  \"intervals\" : [\"2015-09-12/2015-09-13\"],\n" +
+            "  \"granularity\" : \"all\",\n" +
+            "  \"dimension\" : \"page\",\n" +
+            "  \"metric\" : \"count\",\n" +
+            "  \"threshold\" : 10,\n" +
+            "  \"aggregations\" : [\n" +
+            "    {\n" +
+            "      \"type\" : \"count\",\n" +
+            "      \"name\" : \"count\"\n" +
+            "    }\n" +
+            "  ]\n" +
+            "}";
+
+    @Autowired
+    private RestTemplate restTemplate;
 
     @Value("${slackBotToken}")
     private String slackToken;
@@ -49,6 +70,11 @@ public class SlackBot extends Bot {
     public void onReceiveDM(WebSocketSession session, Event event) {
         if (event.getText().toString().contains("joke")) {
             reply(session, event, new Message(jokes.get((int) (Math.random() * (32 - 0)) + 0)));
+        } else if (event.getText().toString().contains("topn wiki")) {
+            String url = "http://localhost:8082/druid/v2?pretty";
+            ResponseEntity<String> response = restTemplate.postForEntity(url,wikiTopNQuery,String.class);
+            reply(session, event,response.getBody());
+
         } else {
             reply(session, event, "Hi, I am " + slackService.getCurrentUser().getName() + ".Gonnect is training me!!! Soon I will understand you. Appolgises!!!");
         }
