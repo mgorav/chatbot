@@ -54,30 +54,6 @@ public class SlackBot extends Bot {
         }
     }
 
-    @Controller(events = DIRECT_MENTION, pattern = "joke")
-    public void onReceiveMessage(WebSocketSession session, Event event, Matcher matcher) {
-        if (!matcher.group(0).isEmpty()) {
-
-            reply(session, event, new Message(jokes.get((int) (Math.random() * (32 - 0)) + 0)));
-        } else {
-
-            reply(session, event, new Message("Gonnect is training me!!! Soon I will understand you. Appolgises!!!"));
-        }
-    }
-
-//    @Controller(events = {EventType.DIRECT_MENTION, EventType.DIRECT_MESSAGE},pattern = "fuck|shit|bitch")
-//    public void onReceiveDM(WebSocketSession session, Event event) {
-//        reply(session, event, new Message("Hi, I am " + slackService.getCurrentUser().getName()));
-//    }
-
-//    @Controller(events = DIRECT_MENTION, pattern = "fuck|shit|bitch")
-//    public void onReceiveMessage(WebSocketSession session, Event event, Matcher matcher) {
-//        if (!matcher.group(0).isEmpty()) {
-//
-//            reply(session, event, new Message("Becareful you have say bad words " + 100+ " times"));
-//        }
-//    }
-
 
     @PostConstruct
     public void postConstruct() {

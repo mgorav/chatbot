@@ -13,5 +13,4 @@ VOLUME /tmp
 ADD target/GonnectChatter-0.0.1.jar gonnectchatter.jar
 RUN sh -c 'touch /gonnectchatter.jar'
 
-
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/gonnectchatter.jar"]

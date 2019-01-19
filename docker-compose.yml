@@ -20,6 +20,9 @@ services:
     environment:
       - ZOOKEEPER_CONNECT=zookeeper:2181
       - ADVERTISED_LISTENERS=PLAINTEXT://192.168.1.17:9092
+    volumes:
+      - ./wikipedia-kafka-supervisor.json:/kafka/wikipedia-kafka-supervisor.json
+      - ./wikiticker-2015-09-12-sampled.json:/kafka/wikiticker-2015-09-12-sampled.json
   druid:
     image: fokkodriesprong/docker-druid
     ports:
