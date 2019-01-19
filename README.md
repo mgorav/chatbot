@@ -5,7 +5,7 @@
   2. Banking Payment interaction automation
   3. Health Insurance claim adjudication process automation etc etc. 
   
-  These chat bots perform best if they are treated like a normal asset of a company. By that, I mean, give them the power of data to the bot which will use deep learning algorithm to perform there duties. How hard it can be to build such architecture & for these bots. 
+  These chat bots performs best if they are treated like a normal asset of a company. What does this means? I mean, give them the power of data along with deep learning to perform thier duties. How hard it can be to build such architecture & for these bots. 
   
   Check out my github chat bot project, which does the following:
  1. Tells you a joke
