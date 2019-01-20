@@ -33,3 +33,17 @@
  After running the Spring Boot application, you chat with Gonnect chatter box as shown below:
  
  ![alt text](./Slack.png)
+ 
+ 
+
+ Enter into the fascinating world of chatbot :-) This is fun!!! The most important demands from a chatbot are:
+ 
+ 1. how fast it can respond real-time to a question
+ 2. learn equally fast
+ 3. Integrate seamlessly with business 
+ 
+ In the GitHub chatbot example speed is achieved by Kafka and Druid (indexing key dependent variables from the live stream). The last and not the least, a chatbot learns using NLP/CNN. The reference architecture also utilises RESTful APIs interaction, hence ease of integration with bot. To increase day one conversation with chatterbox, it will scan your API gateway (swagger definition) and derive business intent (using DiagFlow) 
+ 
+ Reiterate: treat chatbot like an employee, give them power of data (datalake), APIs and CNN... they will do wonders!
+ 
+ Note: Just add a slack token in the application.properties file to make Gonnect Chatterbox alive.
